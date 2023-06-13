@@ -122,7 +122,8 @@ plotCorrelation -in atac-seq_multiBamSummary_output.tab --corMethod spearman \
 --colorMap RdYlBu --plotNumbers -o heatmap_SpearmanCorr_atac-seq_readCounts.png
 ```
 ![heatmap_SpearmanCorr_atac-seq_readCounts_filt_bam](https://github.com/NAGIBATOR112/Sponge_Epigenetics/assets/89070070/b1833052-f9b3-471a-8988-47fd9c314a9a)
-<div align="center">Fig. 1. Between-replicate correlation heatmap. Clustering dendrogram is shown on the left.</div>
+<div align="center">**Fig. 1** Between-replicate correlation heatmap. Clustering dendrogram is shown on the left.</div>
+
 
 The correlation did not show values >0.9 between replicates, so the creation of a BW had to be done for each of the BAM files separately:
 
