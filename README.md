@@ -111,7 +111,29 @@ bedtools intersect -a Stage_BAM/{SAMPLE}.filt.bam\
 
 </center>
 
- Here we can see that only third replicate for both stages has a qualitive data, but I performed further analysis anyway.
- 
- 
+Here we can see that only third replicate for both stages has a qualitive data, but I performed further analysis anyway.
+Since most of the FRiP < 0.3 I have decided to merge replica ATAC-seq files, so first we need to assess the correlation of bam files with each other.
+```bash
+multiBamSummary bins -b Adult_BAM/adult1.filt.bam Adult_BAM/adult2.filt.bam Adult_BAM/adult3.filt.bam  \
+Larvae_BAM/larvae1.filt.bam Larvae_BAM/larvae2.filt.bam Larvae_BAM/larvae3.filt.bam \
+ -o atac-seq_multiBamSummary_output.tab \
+plotCorrelation -in atac-seq_multiBamSummary_output.tab --corMethod spearman \
+--skipZeros --plotTitle "Spearman Correlation of Read Counts" --whatToPlot heatmap\
+--colorMap RdYlBu --plotNumbers -o heatmap_SpearmanCorr_atac-seq_readCounts.png
+```
+![heatmap_SpearmanCorr_atac-seq_readCounts_filt_bam](https://github.com/NAGIBATOR112/Sponge_Epigenetics/assets/89070070/b1833052-f9b3-471a-8988-47fd9c314a9a)
+<div align="center">Fig. 1. Between-replicate correlation heatmap. Clustering dendrogram is shown on the left.</div>
+
+The correlation did not show values >0.9 between replicates, so the creation of a BW had to be done for each of the BAM files separately:
+
+```bash
+bamCoverage -b Stage_BAM/{SAMPLE}.filt.bam -o {SAMPLE}.bw\
+--binSize 10 \
+--normalizeUsing RPGC\
+--smoothLength 200 --extendReads 100 \
+--maxFragmentLength 140 --centerReads \
+--effectiveGenomeSize 165000000 -p 8
+```
+
+### 2) ChIP-seq Raw data processing:
 
