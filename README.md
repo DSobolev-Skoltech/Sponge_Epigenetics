@@ -13,3 +13,4 @@ Paired-end 76-bp reads for **larva and adult Amphimedon queenslandica (three bio
 ### - RNA-seq data:
 Raw RNA-seq [data](https://www.ncbi.nlm.nih.gov/sra/?term=SRP044247) for **adult** and **larva** _Amphimedon queenslandica_ (Illumina HiSeq 2000, PolyA selected, **paired-end**). Additionally, complementary RNA-seq [data](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE54364) of **_Amphimedon queenslandica_ larvae** can be used for **gene expression analysis** (Illumina HiSeq 2000, **single-end**). 
 
+## <div align="center">Data Processing</div>
